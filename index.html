@@ -1,0 +1,65 @@
+<script>
+    var linkedList = {
+        head: {
+            value: 3,
+            next: {
+                value: 2,
+                next: {
+                    value: 1,
+                    next: null
+                }
+            }
+        }
+    };
+    
+    const rec = (next) => {
+        if (next === null) {
+            return;
+        }
+        console.log(next.value);
+        rec(next.next);
+    };
+
+    rec(linkedList.head);
+
+    console.log("==============================================================");
+
+    var data = [{
+        title: 'topNode',
+        children: [{
+            title: 'node1',
+            children: [{
+                title: 'randomNode_1'
+            }, {
+                title: 'node2',
+                children: [{
+                    title: 'randomNode_2',
+                    children:[{   
+                        title: 'node2',
+                        children: [{
+                            title: 'randomNode_3',
+                        }]
+                    }]
+                }]
+            }]
+        }],
+    }];
+
+    const searchTitle = (element, matchingTitle) => {
+        if (element.title === matchingTitle) {
+            return element;
+        } else if (element.children != null) {
+            let result = null;
+            let i = null;
+            for (i = 0; result === null && i < element.children.length; i++) {
+                result = searchTitle(element.children[i], matchingTitle);
+            }
+            return result;
+        }
+        return null;
+    };
+
+    const element = data[0];
+    const result = searchTitle(element, 'randomNode_3');
+    console.log(result);
+</script>
