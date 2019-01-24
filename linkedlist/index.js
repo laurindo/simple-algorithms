@@ -1,4 +1,4 @@
-class LinkedList {
+class Linkedlist {
     constructor(value) {
         this.head = null;
         this.length = 0;
@@ -12,8 +12,16 @@ class LinkedList {
         this.length++;
         return this;
     }
+
+    removeFromHead() {
+        if (this.length === 0) {
+            return undefined;
+        }
+        const value = this.head.value;
+        this.head = this.head.next;
+        this.length--;
+        return value;
+    }
 }
 
-const list = new LinkedList('first');
-const r = list.addToHead('second').addToHead('third');
-console.log(r);
+module.exports = Linkedlist;
