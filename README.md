@@ -1,4 +1,4 @@
-## Package with many algortihms
+## Package with many algorithms
 
 * Install
 
